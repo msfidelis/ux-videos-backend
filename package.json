@@ -1,0 +1,33 @@
+{
+  "name": "ux-videos-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msfidelis/ux-videos-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/msfidelis/ux-videos-backend/issues"
+  },
+  "homepage": "https://github.com/msfidelis/ux-videos-backend#readme",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "body-parser": "^1.18.2",
+    "consign": "^0.1.6",
+    "express": "^4.16.2",
+    "express-validator": "^4.3.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.1.0",
+    "nodemon": "^1.14.11",
+    "supertest": "^3.0.0"
+  }
+}
