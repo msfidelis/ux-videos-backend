@@ -1,7 +1,7 @@
 module.exports = (app) => {
 
     app.get('/healthcheck', (req, res) => {
-        res.json({status: "Ok"});
+        res.json({status: 200});
     });
 
 }
