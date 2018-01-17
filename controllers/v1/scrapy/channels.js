@@ -27,7 +27,7 @@ module.exports = (app) => {
 
     });
 
-    app.delete('/api/v1/scrapy/channels', (req, res) => {
+    app.delete('/api/v1/scrapy/channels/:id', (req, res) => {
 
     });
 

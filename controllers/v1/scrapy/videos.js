@@ -4,8 +4,17 @@ const scrapyVideosSchema = require('../../../models/scrapy-videos');
 
 module.exports = (app) => {
 
-    app.post('/api/v1/scrapy/videos', (req, res) => {
-        res.json({status: "Garibaldo Integration for Videos"});
+    app.post('/api/v1/scrapy/channels', (req, res) => {
+       
+        const log = req.body;
+
+        new scrapyChannelSchema(log).save()
+        .then(newLog => {
+            res.status(201).json(newLog);
+        }).catch(err => {
+            res.status(400).json(err);
+        });
+
     });
 
 }
