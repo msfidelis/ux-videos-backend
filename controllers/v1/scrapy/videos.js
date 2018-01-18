@@ -8,7 +8,7 @@ module.exports = (app) => {
        
         const log = req.body;
 
-        new scrapyChannelSchema(log).save()
+        new scrapyVideosSchema(log).save()
         .then(newLog => {
             res.status(201).json(newLog);
         }).catch(err => {
