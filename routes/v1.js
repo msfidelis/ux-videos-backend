@@ -12,19 +12,3 @@ module.exports = (app) => {
 
     app.post('/api/v1/scrapy/channels', channelsScrapyController.createAction);
 }
-
-// class Routes {
-
-//     constructor() {}
-
-//     initRoutes(app) {
-
-//         app.post('/api/v1/scrapy/videos', videosScrapyController.createAction);
-//         app.post('/api/v1/scrapy/channels', channelsScrapyController.createAction);
-
-//     }
-
-// }
-
-
-// module.exports = new Routes();
