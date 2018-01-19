@@ -4,7 +4,7 @@
  * Register a new Video and parse tags
  * @param {*} params 
  */
-module.exports.createNewVideo = (params) => {};
+module.exports.createNewVideo = params => {};
 
 /**
  * Update video
@@ -31,4 +31,4 @@ module.exports.videosPaginationWithCache = (query, options) => {};
  * Delete video using id
  * @param {*} id 
  */
-module.exports.deleteVideoById = (id) => {};
+module.exports.deleteVideoById = id => {};
