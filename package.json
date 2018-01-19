@@ -1,35 +1,40 @@
 {
-  "name": "ux-videos-backend",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/msfidelis/ux-videos-backend.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/msfidelis/ux-videos-backend/issues"
-  },
-  "homepage": "https://github.com/msfidelis/ux-videos-backend#readme",
-  "dependencies": {
-    "axios": "^0.17.1",
-    "body-parser": "^1.18.2",
-    "consign": "^0.1.6",
-    "dotenv": "^4.0.0",
-    "express": "^4.16.2",
-    "express-validator": "^4.3.0",
-    "mongoose": "^4.13.9"
-  },
-  "devDependencies": {
-    "chai": "^4.1.2",
-    "mocha": "^4.1.0",
-    "nodemon": "^1.14.11",
-    "supertest": "^3.0.0"
-  }
+    "name": "ux-videos-backend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "nodemon app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/msfidelis/ux-videos-backend.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/msfidelis/ux-videos-backend/issues"
+    },
+    "homepage": "https://github.com/msfidelis/ux-videos-backend#readme",
+    "dependencies": {
+        "axios": "^0.17.1",
+        "body-parser": "^1.18.2",
+        "consign": "^0.1.6",
+        "dotenv": "^4.0.0",
+        "express": "^4.16.2",
+        "express-validator": "^4.3.0",
+        "mongoose": "^4.13.9",
+        "passport": "^0.4.0",
+        "passport-jwt": "^3.0.1",
+        "take-my-hash": "^1.0.0"
+    },
+    "devDependencies": {
+        "chai": "^4.1.2",
+        "mocha": "^4.1.0",
+        "nodemon": "^1.14.11",
+        "supertest": "^3.0.0"
+    }
 }

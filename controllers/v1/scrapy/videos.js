@@ -1,19 +1,19 @@
 'use strict';
 
-const scrapyVideosSchema = require('../../../models/scrapy-videos');
+const scrapyVideosSchema = require('../../../models/ScrapyVideos');
 
 module.exports = (app) => {
 
     app.post('/api/v1/scrapy/videos', (req, res) => {
-       
+
         const log = req.body;
 
         new scrapyVideosSchema(log).save()
-        .then(newLog => {
-            res.status(201).json(newLog);
-        }).catch(err => {
-            res.status(400).json(err);
-        });
+            .then(newLog => {
+                res.status(201).json(newLog);
+            }).catch(err => {
+                res.status(400).json(err);
+            });
 
     });
 
