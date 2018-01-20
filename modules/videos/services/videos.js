@@ -8,6 +8,13 @@ const videoSchema = require('../models/Videos');
  */
 module.exports.createNewVideo = params => new videoSchema(params).save();
 
+
+/**
+ * Find video by id
+ * @param {*} id 
+ */
+module.exports.findVideoById = id => videoSchema.findById({_id: id});
+
 /**
  * Update video
  * @param {*} id 

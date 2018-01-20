@@ -19,7 +19,9 @@ module.exports = (app) => {
     app.post('/api/v1/scrapy/channels', channelsScrapyController.createAction);
 
     app.get('/api/v1/tags', tagsController.listAction);
-    app.get('/api/v1/videos', videosController.paginate);
-    app.delete('/api/v1/videos', videosController.clean);
+    app.get('/api/v1/videos', videosController.paginateAction);
+    app.get('/api/v1/videos/:id', videosController.showAction);
+    app.delete('/api/v1/videos', videosController.cleanAction);
+    app.delete('/api/v1/videos/:id', videosController.deleteAction);
 
 }
