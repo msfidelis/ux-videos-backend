@@ -9,6 +9,9 @@ const VideoService = require('../../videos/services/videos');
  * @param {*} res 
  */
 module.exports.createAction = (req, res) => {
+
+    console.log("Video Log Created:", req.body);
+
     VideoScrapyService
         .createLog(req.body)
         .then(data => res.status(201).json(data))
@@ -50,7 +53,7 @@ module.exports.acceptAction = (req, res) => {
     VideoScrapyService
         .findLogById(id)
         .then(log => {
-            
+
             if (log === null) throw "Not found";
 
             VideoScrapyService
