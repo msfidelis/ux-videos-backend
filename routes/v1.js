@@ -1,6 +1,7 @@
 'use strict';
 
 // const passport = require('../configs/passport')();
+const tagsController = require('../modules/videos/controllers/tags');
 const usersController = require('../modules/users/controllers/users');
 const videosController = require('../modules/videos/controllers/videos');
 const videosScrapyController = require('../modules/scrapy/controllers/videos');
@@ -17,6 +18,8 @@ module.exports = (app) => {
 
     app.post('/api/v1/scrapy/channels', channelsScrapyController.createAction);
 
+    app.get('/api/v1/tags', tagsController.listAction);
     app.get('/api/v1/videos', videosController.paginate);
     app.delete('/api/v1/videos', videosController.clean);
+
 }

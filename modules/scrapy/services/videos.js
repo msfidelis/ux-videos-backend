@@ -4,6 +4,7 @@ const Promise = require('bluebird');
 
 const VideoScrapySchema = require('../models/Videos');
 const videoService = require('../../videos/services/videos');
+const tagService = require('../../videos/services/tags');
 
 /**
  * 
@@ -71,7 +72,8 @@ class VideoScrapyService {
 
                 Promise.all([
                     videoService.createNewVideo(infos),
-                    this.removeLogById(id)
+                    tagService.parseTags(log.tags),
+                    this.removeLogById(id),
                 ])
                 .then(success => resolve(success))
                 .catch(err => reject(err));
