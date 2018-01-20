@@ -1,6 +1,7 @@
 'use strict';
 
 const mongo = require('../../../config/mongo');
+const pagination = require('mongoose-paginate');
 
 const VideoSchema = mongo.Schema({
     title: { type: String, required: true, trim: true },
@@ -11,5 +12,7 @@ const VideoSchema = mongo.Schema({
     tags: { type: Array, default: [] },
     updated_at: { type: Date, default: Date.now },
 });
+
+VideoSchema.plugin(pagination);
 
 module.exports = mongo.model('Video', VideoSchema);

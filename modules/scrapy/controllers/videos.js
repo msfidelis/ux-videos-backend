@@ -1,6 +1,7 @@
 'use strict';
 
 const VideoScrapyService = require('../services/videos');
+const VideoService = require('../../videos/services/videos');
 
 /**
  * Create a new Video Log from Garibaldo Search
@@ -44,4 +45,30 @@ module.exports.denyAction = (req, res) => {
  */
 module.exports.acceptAction = (req, res) => {
 
+    const id = req.params.id;
+
+    VideoScrapyService
+        .findLogById(id)
+        .then(log => {
+            
+            if (log === null) throw "Not found";
+
+            VideoScrapyService
+                .acceptLogAsVideo(id)
+                .then(success => res.status(201).json(success))
+                .catch(err => res.status(500).json(err));
+        })
+        .catch(err => { 
+            res.status(404).json({
+            status : 404, 
+            message: `log ${id} not found`
+        })});
+
+};
+
+module.exports.cleanAction = (req, res) => {
+    VideoScrapyService
+        .cleanLogs()
+        .then(success => res.status(204).json(success))
+        .catch(err => res.status(400).json(err));
 };
