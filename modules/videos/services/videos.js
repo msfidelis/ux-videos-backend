@@ -6,9 +6,7 @@ const videoSchema = require('../models/Videos');
  * Register a new Video and parse tags
  * @param {*} params 
  */
-module.exports.createNewVideo = params => {
-    return new videoSchema(params).save();
-};
+module.exports.createNewVideo = params => new videoSchema(params).save();
 
 /**
  * Update video
@@ -22,9 +20,8 @@ module.exports.updateVideo = (id, params) => {};
  * @param {*} query 
  * @param {*} options 
  */
-module.exports.videosPagination = (query = {}, options = {}) => {
-    return videoSchema.paginate(query, options);
-};
+module.exports.videosPagination = (query = {}, options = {}) => videoSchema.paginate(query, options);
+
 
 /**
  * Paginate videos using redis cache
@@ -37,14 +34,10 @@ module.exports.videosPaginationWithCache = (query, options) => {};
  * Delete video using id
  * @param {*} id 
  */
-module.exports.deleteVideoById = id => {
-    return videoSchema.findByIdAndRemove({_id: id});
-};
+module.exports.deleteVideoById = id => videoSchema.findByIdAndRemove({_id: id});
 
 /**
  * Delete all videos 
  * Use only in dev mode
  */
-module.exports.cleanVideos = () => {
-    return videoSchema.remove({});
-}
+module.exports.cleanVideos = () => videoSchema.remove({});

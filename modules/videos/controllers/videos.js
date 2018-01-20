@@ -19,8 +19,6 @@ module.exports.paginate = (req, res) => {
 
     const query = {};
 
-    console.log(req.query);
-
     if (req.query.tags) {
         query.tags = new RegExp(`^${req.query.tags}$`, "i");
     }

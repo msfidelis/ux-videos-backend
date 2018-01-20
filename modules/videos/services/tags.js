@@ -36,7 +36,4 @@ module.exports.deleteTag = tag => {};
  * Create a new tag
  * @param {*} tag 
  */
-module.exports.createTag = tag => {
-    console.log("criando tag");
-    return new TagSchema({tag: tag}).save()
-}
+module.exports.createTag = tag => new TagSchema({tag: tag}).save();
