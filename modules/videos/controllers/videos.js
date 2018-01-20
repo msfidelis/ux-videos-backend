@@ -10,7 +10,7 @@ const VideosService = require('../services/videos');
 module.exports.paginate = (req, res) => {
 
     const page = req.query.page || 1;
-    const limit = req.query.limit || 10;
+    const limit = req.query.limit || 40;
 
     const options = {
         limit: limit,
