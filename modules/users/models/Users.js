@@ -9,7 +9,8 @@ const userSchema = mongo.Schema({
     name: { type: String, required: true, trim: true },
     email: { type: String, required: true, trim: true },
     password: { type: String, required: true, trim: true },
-    tardis: { type: String, default: 'false' }
+    enabled: { type: Boolean, required: true, default: true },
+    tardis: { type: String, default: false }
 });
 
 userSchema.pre('save', next => {

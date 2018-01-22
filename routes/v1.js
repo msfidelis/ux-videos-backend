@@ -18,10 +18,18 @@ module.exports = (app) => {
 
     app.post('/api/v1/scrapy/channels', channelsScrapyController.createAction);
 
+    // Videos Routes
     app.get('/api/v1/tags', tagsController.listAction);
     app.get('/api/v1/videos', videosController.paginateAction);
     app.get('/api/v1/videos/:id', videosController.showAction);
     app.delete('/api/v1/videos', videosController.cleanAction);
     app.delete('/api/v1/videos/:id', videosController.deleteAction);
+
+    // Users routes
+    app.post('/api/v1/users', usersController.createAction);
+    app.put('/api/v1/users/:id/changepassword', usersController.changePassword);
+    app.get('/api/v1/users', usersController.listAction);
+    app.get('/api/v1/users/:id', usersController.detailAction);
+
 
 }
