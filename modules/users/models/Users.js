@@ -1,6 +1,6 @@
 'use strict';
 
-const mongo = require('../config/mongo')
+const mongo = require('../../../config/mongo');
 const hash = require('take-my-hash');
 
 const SALT_WORK_FACTOR = 10;
