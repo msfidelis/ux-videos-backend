@@ -9,10 +9,26 @@ const userService = require('../services/users');
  */
 module.exports.createAction = (req, res) => {
 
+    const user = req.body;
+
     userService
-        .createUser(req.body)
-        .then(user => res.status(201).json(user))
-        .catch(err => res.status(400).json(err));
+        .findUserByEmail(user.email)
+        .then(success => {
+            
+            if (success !== null) throw "exists";
+
+            userService
+                .createUser(req.body)
+                .then(user => res.status(201).json(user))
+                .catch(err => res.status(400).json(err));
+
+        })
+        .catch(err => {
+            res.status(400).json({
+                status: 400, 
+                message: `email ${req.body.email} already exists`
+            });
+        });
 
 };
 
@@ -57,5 +73,25 @@ module.exports.detailAction = (req, res) => {
  * @param {*} res 
  */
 module.exports.changePassword = (req, res) => {
+
+};
+
+/**
+ * Clean all users - use in development mode
+ * @param {*} req 
+ * @param {*} res 
+ */
+module.exports.cleanAction = (req, res) => {
+    userService.deleteUsers()
+    .then(success => res.status(204).json(success))
+    .catch(err => res.status(500).json({}));
+};
+
+/**
+ * Disable a user using an id
+ * @param {*} req 
+ * @param {*} res 
+ */
+module.exports.disableAction = (req, res) => {
 
 };

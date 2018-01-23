@@ -1,11 +1,13 @@
 'use strict';
 
-// const passport = require('../configs/passport')();
-const tagsController = require('../modules/videos/controllers/tags');
-const usersController = require('../modules/users/controllers/users');
-const videosController = require('../modules/videos/controllers/videos');
-const videosScrapyController = require('../modules/scrapy/controllers/videos');
-const channelsScrapyController = require('../modules/scrapy/controllers/channels');
+const passport                  = require('../config/passport');
+
+const authController            = require('../modules/users/controllers/auth');
+const tagsController            = require('../modules/videos/controllers/tags');
+const usersController           = require('../modules/users/controllers/users');
+const videosController          = require('../modules/videos/controllers/videos');
+const videosScrapyController    = require('../modules/scrapy/controllers/videos');
+const channelsScrapyController  = require('../modules/scrapy/controllers/channels');
 
 module.exports = (app) => {
 
@@ -27,9 +29,12 @@ module.exports = (app) => {
 
     // Users routes
     app.post('/api/v1/users', usersController.createAction);
+    app.delete('/api/v1/users', passport.authenticate('jwt'), usersController.cleanAction);
     app.put('/api/v1/users/:id/changepassword', usersController.changePassword);
     app.get('/api/v1/users', usersController.listAction);
     app.get('/api/v1/users/:id', usersController.detailAction);
+
+    app.post('/api/v1/users/auth', authController.authAction);
 
 
 }
