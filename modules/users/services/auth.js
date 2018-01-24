@@ -23,11 +23,17 @@ module.exports.authenticate = (email, password) => {
                     if (err) {
                         throw "invalid";
                     } else {
-                        resolve({token: jwt.encode({
+
+                        resolve({
                             _id: user._id,
                             name: user.name,
-                            email: user.email
-                        })});
+                            email: user.email,
+                            token: jwt.encode({
+                                _id: user._id,
+                                name: user.name,
+                                email: user.email
+                            })
+                        });
                     }
 
                 });
