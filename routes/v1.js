@@ -1,13 +1,13 @@
 'use strict';
 
-const passport                  = require('../config/passport');
+const passport = require('../config/passport');
 
-const authController            = require('../modules/users/controllers/auth');
-const tagsController            = require('../modules/videos/controllers/tags');
-const usersController           = require('../modules/users/controllers/users');
-const videosController          = require('../modules/videos/controllers/videos');
-const videosScrapyController    = require('../modules/scrapy/controllers/videos');
-const channelsScrapyController  = require('../modules/scrapy/controllers/channels');
+const authController = require('../modules/users/controllers/auth');
+const tagsController = require('../modules/videos/controllers/tags');
+const usersController = require('../modules/users/controllers/users');
+const videosController = require('../modules/videos/controllers/videos');
+const videosScrapyController = require('../modules/scrapy/controllers/videos');
+const channelsScrapyController = require('../modules/scrapy/controllers/channels');
 
 module.exports = (app) => {
 
@@ -22,6 +22,7 @@ module.exports = (app) => {
 
     // Videos Routes
     app.get('/api/v1/tags', tagsController.listAction);
+    app.delete('/api/v1/tags', tagsController.cleanAction);
     app.get('/api/v1/videos', videosController.paginateAction);
     app.get('/api/v1/videos/:id', videosController.showAction);
     app.delete('/api/v1/videos', passport.authenticate('jwt'), videosController.cleanAction);

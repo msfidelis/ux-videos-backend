@@ -12,7 +12,7 @@ module.exports.parseTags = tags => {
 
     tags.map(tag => {
 
-        TagSchema.find({tag: tag}).then(result => {
+        TagSchema.find({ tag: tag }).then(result => {
             console.log(result, tag);
             if (result === null || result.length === 0) this.createTag(tag);
         });
@@ -36,4 +36,10 @@ module.exports.deleteTag = tag => {};
  * Create a new tag
  * @param {*} tag 
  */
-module.exports.createTag = tag => new TagSchema({tag: tag}).save();
+module.exports.createTag = tag => new TagSchema({ tag: tag }).save();
+
+/**
+ * Delete all tags.
+ * Use only in development mode
+ */
+module.exports.cleanTags = () => TagSchema.remove({});

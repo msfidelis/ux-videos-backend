@@ -2,8 +2,6 @@
 
 const UsersSchema = require('../models/Users');
 
-// module.exports.createUser = params => new UsersSchema(params).save();
-
 class UserService {
 
     constructor() {}
@@ -20,7 +18,7 @@ class UserService {
      * List active users
      */
     listUsers() {
-        return UsersSchema.find({enabled: true}).select("name email");
+        return UsersSchema.find({ enabled: true }).select("name email");
     }
 
     /**
@@ -36,7 +34,7 @@ class UserService {
      * @param {*} email 
      */
     findUserByEmail(email) {
-        return UsersSchema.findOne({email: email}).select('_id name email password');
+        return UsersSchema.findOne({ email: email }).select('_id name email password');
     }
 
     /**
