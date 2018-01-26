@@ -5,19 +5,23 @@
 * Clone this repo
 
 ```
-git clone git.alalal
+git clone git@github.com:msfidelis/ux-videos-backend.git
 ```
 
-* Install deps with NPM
+* Install dependencies with NPM
 
 ```
 npm install
 ```
 
-*
-
 * Run using docker 
 
 ```
 docker-compose up -d 
+```
+
+* Install development seeds 
+
+```
+npm run seed
 ```
