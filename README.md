@@ -1,6 +1,6 @@
 # UXvideos Backend
 
-# Instalation 
+# Installation 
 
 * Clone this repo
 
