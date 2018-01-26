@@ -11,7 +11,6 @@ const SECRET        = process.env.JWT_SECRET || 'doutorequemtemdoutorado';
 const params = {
   secretOrKey: SECRET,
   jwtFromRequest: ExtractJwt.fromHeader('authorization')
-  //jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('jwt')
 };
 
 const strategy = new Strategy(params, (payload, done) => {
