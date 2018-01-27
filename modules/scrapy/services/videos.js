@@ -2,9 +2,10 @@
 
 const Promise = require('bluebird');
 
-const VideoScrapySchema = require('../models/Videos');
-const videoService = require('../../videos/services/videos');
-const tagService = require('../../videos/services/tags');
+const VideoScrapySchema     = require('../models/Videos');
+const tagService            = require('../../videos/services/tags');
+const videoService          = require('../../videos/services/videos');
+const channelsService       = require('../../channels/services/channels');
 
 /**
  * 
@@ -79,9 +80,15 @@ class VideoScrapyService {
                         tags: log.tags
                     };
 
+                    const channel = {
+                        title: log.channel_name, 
+                        link: log.channel_link
+                    };
+
                     Promise.all([
                             videoService.createNewVideo(infos),
                             tagService.parseTags(log.tags),
+                            channelsService.parseChannel(channel),
                             this.denyLog(id),
                         ])
                         .then(success => resolve(success))

@@ -6,6 +6,7 @@ const authController = require('../modules/users/controllers/auth');
 const tagsController = require('../modules/videos/controllers/tags');
 const usersController = require('../modules/users/controllers/users');
 const videosController = require('../modules/videos/controllers/videos');
+const channelsController = require('../modules/channels/controllers/channels');
 const videosScrapyController = require('../modules/scrapy/controllers/videos');
 const channelsScrapyController = require('../modules/scrapy/controllers/channels');
 
@@ -27,6 +28,9 @@ module.exports = (app) => {
     app.get('/api/v1/videos/:id', videosController.showAction);
     app.delete('/api/v1/videos', passport.authenticate('jwt'), videosController.cleanAction);
     app.delete('/api/v1/videos/:id', passport.authenticate('jwt'), videosController.deleteAction);
+
+    // Channels Routes
+    app.get('/api/v1/channels', channelsController.listAction);
 
     // Users routes
     app.post('/api/v1/users', passport.authenticate('jwt'), usersController.createAction);

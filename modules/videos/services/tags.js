@@ -11,7 +11,11 @@ module.exports.parseTags = tags => {
     tags.map(tag => {
 
         TagSchema.find({ tag: tag }).then(result => {
-            if (result === null || result.length === 0) this.createTag(tag);
+            if (result === null || result.length === 0)  {
+                return this.createTag(tag);
+            } else {
+                return true;
+            }
         });
 
     });
