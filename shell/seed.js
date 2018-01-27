@@ -6,13 +6,17 @@ process.env.MONGO_DATABASE = 'ux-videos';
 
 
 const videoScrapyService = require('../modules/scrapy/services/videos');
+const userService = require('../modules/users/services/users');
 
-const default_user = {
-
+const defaultUser = {
+    email : "admin@admin.com",
+    password : "123",
+    name : "Admin"
 };
 
-
-//Videos 
+// userService.createUser(defaultUser)
+//     .then(success => console.log("Admin user created", defaultUser))
+//     .catch(err => console.log("Unable to create admin user!", err));
 
 const videosMock = [{
         "channel_link": "https://www.youtube.com/user/gonowtecnologia",
@@ -185,22 +189,20 @@ const videosMock = [{
     }
 ];
 
-const logsPromises = videosMock.map(videoMock => videoScrapyService.createLog(videoMock));
+videoScrapyService
+    .createLogBatch(videosMock)
+    .then( (videosBatch) => {
 
-Promise.all(logsPromises)
-    .then(success => {
-        videoScrapyService.listLogs().then(logs => {
-            logs.map(log => videoScrapyService.acceptLogAsVideo(log._id))
-                .then(success => {
-                    console.log(success);
-                    process.exit();
-                })
-                .catch(err => {
-                    console.log(err);
-                    process.exit();
-                });
+        return new Promise((resolve, reject) => {
+
+            videosBatch.forEach(video => {
+
+                videoScrapyService.acceptLogAsVideo(video._id)
+                .then(success => resolve(success))
+                .catch(err => reject(err));
+
+            });
+
         });
-    }).catch(err => {
-        console.log(err);
-        process.exit();
+
     })

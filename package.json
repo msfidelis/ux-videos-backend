@@ -7,7 +7,8 @@
         "start": "node app.js",
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "nodemon app.js",
-        "seed": "node ./shell/seed.js"
+        "seed": "node ./shell/seed.js",
+        "reset": "node ./shell/reset.js"
     },
     "repository": {
         "type": "git",

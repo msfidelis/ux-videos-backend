@@ -8,12 +8,9 @@ const TagSchema = require('../models/Tags');
  */
 module.exports.parseTags = tags => {
 
-    console.log(tags);
-
     tags.map(tag => {
 
         TagSchema.find({ tag: tag }).then(result => {
-            console.log(result, tag);
             if (result === null || result.length === 0) this.createTag(tag);
         });
 

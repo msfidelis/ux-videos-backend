@@ -21,6 +21,14 @@ class VideoScrapyService {
     }
 
     /**
+     * Create multiple lgos
+     * @param {*} logs 
+     */
+    createLogBatch(logs) {
+        return Promise.all(logs.map(log => new VideoScrapySchema(log).save()));
+    }
+
+    /**
      * Find using id
      * @param {*} id 
      */
@@ -74,7 +82,7 @@ class VideoScrapyService {
                     Promise.all([
                             videoService.createNewVideo(infos),
                             tagService.parseTags(log.tags),
-                            this.removeLogById(id),
+                            this.denyLog(id),
                         ])
                         .then(success => resolve(success))
                         .catch(err => reject(err));
