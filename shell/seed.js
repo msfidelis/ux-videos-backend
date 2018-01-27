@@ -14,9 +14,9 @@ const defaultUser = {
     name : "Admin"
 };
 
-// userService.createUser(defaultUser)
-//     .then(success => console.log("Admin user created", defaultUser))
-//     .catch(err => console.log("Unable to create admin user!", err));
+userService.createUser(defaultUser)
+    .then(success => console.log("Admin user created", defaultUser))
+    .catch(err => console.log("Unable to create admin user!", err));
 
 const videosMock = [{
         "channel_link": "https://www.youtube.com/user/gonowtecnologia",
