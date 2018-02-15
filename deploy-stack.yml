@@ -15,7 +15,7 @@ services:
       - JTW_SECRET=doutorequemtemdoutorado
     
     deploy:
-      replicas: 1
+      replicas: 3
       update_config:
         parallelism: 2
         delay: 10s
@@ -34,7 +34,7 @@ services:
       - API_URL=http://backend-api:3000/api/v1
 
     deploy:
-      replicas: 1
+      replicas: 3
       update_config:
         parallelism: 2
         delay: 10s
@@ -63,3 +63,5 @@ services:
 
 networks: 
   backend-service:
+    driver: overlay
+    attachable: true
