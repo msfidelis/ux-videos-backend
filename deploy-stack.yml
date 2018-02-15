@@ -63,5 +63,3 @@ services:
 
 networks: 
   backend-service:
-    driver: overlay
-    attachable: true
