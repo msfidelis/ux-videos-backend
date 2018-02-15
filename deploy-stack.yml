@@ -48,7 +48,7 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - './temp/data:/data/db'
+      - db-volume:/data/db
     networks:
       - backend-service  
     deploy:
@@ -63,3 +63,7 @@ services:
 
 networks: 
   backend-service:
+    driver: overlay
+
+volumes:
+    db-volume:
