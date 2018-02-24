@@ -13,8 +13,8 @@ module.exports.paginateAction = (req, res) => {
     const limit = req.query.limit || 40;
 
     const options = {
-        limit: limit,
-        page: page
+        limit: parseInt(limit),
+        page: parseInt(page)
     };
 
     const query = {};
